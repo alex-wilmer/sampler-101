@@ -1,4 +1,7 @@
+import React from 'react'
+import { render } from 'react-dom'
 import { zip } from 'lodash'
+import Sampler from './Sampler'
 
 async function app() {
   const audioCtx = new AudioContext()
@@ -24,10 +27,14 @@ async function app() {
     source.start()
   }
 
-  window.onkeydown = event => {
-    let i = event.keyCode % samples.length
-    trigger(bufferMap[samples[i]])
+  return {
+    audioCtx,
+    samples,
+    bufferMap,
+    trigger,
   }
 }
 
-app()
+app().then(audioProps =>
+  render(<Sampler {...audioProps} />, document.getElementById('root')),
+)
