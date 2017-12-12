@@ -1,23 +1,6 @@
 import React from 'react'
 
 class Sampler extends React.Component {
-  state = {
-    pads: [
-      {
-        sample: null,
-      },
-      {
-        sample: null,
-      },
-      {
-        sample: null,
-      },
-      {
-        sample: null,
-      },
-    ],
-  }
-
   render() {
     let { samples, bufferMap, trigger } = this.props
 
